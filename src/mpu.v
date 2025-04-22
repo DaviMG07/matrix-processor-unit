@@ -79,7 +79,8 @@ module mpu(
 
   // Select between ALU dumping data and instruction data for memory writes
   assign mem_data_in = alu_dumping ? dumping_data : instruction_data;
-
+  assign send        = op_code == 4'd6; // LOAD
+  assign data_out    = send ? mem_data_out : 0;
   // Load new instruction on receive
   always @(posedge receive) begin
     instruction <= instruction_in;

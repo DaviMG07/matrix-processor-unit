@@ -123,8 +123,13 @@ always @(posedge clock) begin
           mem_start         <= 0;
           mem_write_enabled <= 0;
         end else begin
-          mem_start         <= 1;
-          mem_write_enabled <= op_code == STORE;
+          if (op_code == STORE) begin
+            mem_start         <= 1;
+            mem_write_enabled <= 1;
+          end else begin
+            mem_start         <= 1;
+            mem_write_enabled <= 0;
+          end
         end 
       end
 

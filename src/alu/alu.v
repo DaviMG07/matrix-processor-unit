@@ -16,6 +16,7 @@ parameter ADD  = 4'd0,
           TRS  = 4'd5;
 
 wire [199:0] add_m, sub_m, mul_m, muls_m, opp_m, trs_m;
+
 add add_op (
   matrix_a,
   matrix_b,

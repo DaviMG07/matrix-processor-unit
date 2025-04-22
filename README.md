@@ -6,11 +6,11 @@
 - Davi Macêdo Gomes
 - Victor Lopes
 ## Sumário:
-- [Recursos Utilizados](#Recursos Utilizados)
-- [Caminho de Dados](#Caminho de Dados)
-- [Arquitetura do Conjunto de Instruções(Isa)](#Arquitetura do Conjunto de Instruções(ISA))
-- [Máquina de Estados](#Máquina de Estados)
-- [Unidade Lógica e Aritmética](#Unidade Lógica e Aritmética)
+- [Recursos Utilizados](#Recursos-Utilizados)
+- [Caminho de Dados](#Caminho-de-Dados)
+- [Arquitetura do Conjunto de Instruções(Isa)](#Arquitetura-do-Conjunto-de-Instruções(ISA))
+- [Máquina de Estados](#Máquina-de-Estados)
+- [Unidade Lógica e Aritmética](#Unidade-Lógica-e-Aritmética)
 - [Memória](#Memória)
 - [Referências](#Referências)
 # Recursos Utilizados

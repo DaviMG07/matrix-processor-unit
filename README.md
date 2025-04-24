@@ -14,7 +14,6 @@ Este projeto apresenta o desenvolvimento de um coprocessador aritmético otimiza
 - [Arquitetura do Conjunto de Instruções (ISA)](#arquitetura-do-conjunto-de-instruções-isa)
 - [Máquina de Estados](#máquina-de-estados)
 - [Unidade Lógica e Aritmética](#unidade-lógica-e-aritmética)
-- [Memória](#memória)
 - [Referências](#referências)
 
 ---
@@ -44,7 +43,21 @@ O datapath opera sob comando da **unidade de controle**, que emite sinais para d
 Juntos, o datapath e a unidade de controle formam o núcleo do processador, garantindo a execução eficiente das instruções de um programa. Em resumo, o datapath é responsável pela manipulação prática dos dados, enquanto a unidade de controle coordena suas ações em cada etapa do ciclo de instrução.
 
 > **Nota**: Inserir a imagem do datapath desenvolvido pela equipe aqui.  
-> **Tarefa**: Explicar o datapath específico do projeto, detalhando sua implementação.
+
+Componentes do nosso datapath:
+1. Buffer de Instrução
+- recebe uma instrução de 32 bits e guarda em um registrador de 32 bits
+2. Buffers da ULA
+- possuem dois tipos de buffers da ula, de entrada e de saída; os buffers de entrada carregam dados de 16 bits vindos da memória; o buffer de saída envia dados de 16 bits por vez para a memória.
+3. ULA 
+- Executa as operações matriciais com os dados do buffer de entrada
+- Após a execução, os dados do buffer de saída são enviados para a memória.
+4. Memória
+- Unidade responsável por armazenar os dados do processador de forma "fixa", ao contrário dos registradores
+5. Unidade de controle
+- Não necessariamente faz parte do datapath, mas é o componente principal de um processador.
+- É onde a instrução é decodificada, e onde ocorre o ciclo FETCH, DECODE, EXECUTE, WRITE_BACK e MEMORY.
+- responsável por enviar os sinais de controle do projeto.
 
 ---
 
@@ -60,7 +73,44 @@ A **Instruction Set Architecture (ISA)** define a interface entre o hardware do 
 - **ARM**: Comum em dispositivos móveis.
 - **RISC-V**: Popular em projetos acadêmicos e industriais.
 
-> **Tarefa**: Inserir tabelas com os formatos de instruções e suas codificações específicas do projeto.
+Nossa ISA do coprocessador matricial:
+
+para instrução de STORE temos este formato:
+| OP_CODE | ID     | ROW    | COL    | DATA    | não usado |
+| ------- | ------ | ------ | ------ | ------- | --------- |
+| 4 bits  | 2 bits | 3 bits | 3 bits | 16 bits | 4 bits    |
+
+para instruçãode LOAD temos este formato:
+| OP_CODE | ID     | ROW    | COL    | não usado |
+| ------- | ------ | ------ | ------ | --------- |
+| 4 bits  | 2 bits | 3 bits | 3 bits | 20 bits   |
+
+para as outras instruções aritméticas, temos este formato:
+| OP_CODE | não usado |
+| ------- | --------- |
+| 4 bits  | 28 bits   |
+
+
+codificação dos códigos de operação:
+| OP_CODE         | CÓDIGO |
+| --------------- | ------ |
+| ADD             | 0000   |
+| SUB             | 0001   |
+| MUL             | 0010   |
+| MULS(ESCALAR)   | 0011   |
+| OPP             | 0100   |
+| TRS(TRANSPOSTA) | 0101   |
+| LOAD            | 0110   |
+| STORE           | 0111   |
+
+correspondência das matrizes e seus Ids:
+
+| ID  | MATRIZ |
+| --- | ------ |
+| 0   | A      |
+| 1   | B      |
+| 2   | C      |
+| 3   | -      |
 
 ---
 

@@ -42,7 +42,7 @@ O datapath opera sob comando da **unidade de controle**, que emite sinais para d
 
 Juntos, o datapath e a unidade de controle formam o núcleo do processador, garantindo a execução eficiente das instruções de um programa. Em resumo, o datapath é responsável pela manipulação prática dos dados, enquanto a unidade de controle coordena suas ações em cada etapa do ciclo de instrução.
 
-> **Nota**: Inserir a imagem do datapath desenvolvido pela equipe aqui.  
+![Datapath](images/datapath.png)
 
 Componentes do nosso datapath:
 1. Buffer de Instrução
@@ -160,7 +160,7 @@ A máquina de estados segue um fluxo sequencial:
 
 Após completar o ciclo, o processador retorna ao **FETCH** para a próxima instrução. Em arquiteturas avançadas com **pipeline**, essas etapas podem ser executadas simultaneamente para diferentes instruções, aumentando a eficiência.
 
-> **Tarefa**: Explicar a máquina de estados específica do projeto, detalhando sua implementação.
+![Máquina de Estados](images/fsm.png)
 
 ---
 
@@ -185,5 +185,4 @@ Essa especialização permite manipular conjuntos de dados organizados em format
 ---
 
 ## Referências
-> **Tarefa**: Listar as referências bibliográficas ou recursos utilizados no projeto, seguindo um formato acadêmico (ex.: ABNT, APA).
 
